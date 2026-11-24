@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Polar Palace: C, The Lolly Chart (direction) (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--frost:#EEF7FD;--rasp:#E33B6D;--lemon:#FFE15A;--mint:#7ED9B5;--orange:#FF8A3D;--blue:#3A4BC4;--ink:#1D2140;--mute:#525878;--stick:#E9C98F}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--frost);color:var(--ink);font:400 1.0625rem/1.55 "DM Sans",system-ui,sans-serif}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:Bungee,"DM Sans",sans-serif;font-weight:400;line-height:1;margin:0;letter-spacing:.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:700 1.02rem/1 "DM Sans",sans-serif;text-decoration:none;padding:16px 24px;border-radius:999px;min-height:52px;white-space:nowrap;transition:transform .15s}
+.btn:active{transform:scale(.98)}
+.btn.k{background:var(--ink);color:#fff}
+.btn.r{background:var(--rasp);color:#fff}
+.btn.l{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+/* kiosk awning */
+.awning{height:30px;background:repeating-linear-gradient(90deg,var(--rasp) 0 44px,#fff 44px 88px);-webkit-mask:radial-gradient(22px 16px at 22px 0,#000 98%,transparent) 0 0/44px 100% repeat-x;mask:radial-gradient(22px 16px at 22px 0,#000 98%,transparent) 0 0/44px 100% repeat-x;margin-top:-1px}
+header{background:var(--rasp)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;color:#fff}
+.logo{text-decoration:none;font:400 1.6rem/1 Bungee;letter-spacing:.02em}
+.logo small{display:block;font:500 .78rem/1 "DM Sans";letter-spacing:.06em;margin-top:6px;opacity:.9}
+nav{display:flex;gap:24px;font-weight:700}
+nav a{text-decoration:none}
+nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.hd .btn{background:var(--lemon);color:var(--ink);padding:11px 18px;min-height:44px}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding:44px 24px 64px}
+.hero h1{font-size:clamp(2.8rem,5.6vw,4.9rem);line-height:.98}
+.hero h1 span{color:var(--rasp)}
+.hero .lede{font-size:1.2rem;color:var(--mute);max-width:38ch;margin:20px 0 26px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.lolly{position:relative;width:min(100%,400px);margin:0 auto;padding-bottom:96px}
+.lolly .top{border-radius:200px 200px 42px 42px;overflow:hidden;aspect-ratio:3/3.7;border:10px solid #fff;box-shadow:0 26px 50px -24px rgba(29,33,64,.45);position:relative;z-index:1;background:var(--rasp)}
+.lolly .top img{width:100%;height:100%;object-fit:cover}
+.lolly::after{content:"";position:absolute;left:50%;bottom:0;width:46px;height:120px;margin-left:-23px;background:var(--stick);border-radius:0 0 23px 23px;box-shadow:inset -6px 0 0 rgba(0,0,0,.07)}
+.lolly .bite{position:absolute;z-index:2;right:-10px;top:22%;background:var(--lemon);border-radius:999px;width:112px;height:112px;display:grid;place-items:center;text-align:center;font:400 1rem/1.05 Bungee;transform:rotate(10deg)}
+/* today ticket */
+.ticket{background:#fff;border-radius:28px;padding:26px 30px;display:grid;grid-template-columns:1.1fr 1fr auto;gap:28px;align-items:center;box-shadow:0 20px 40px -30px rgba(29,33,64,.5)}
+.ticket .lab{font-weight:700;color:var(--rasp)}
+.ticket .hrs{font:400 clamp(1.9rem,3.6vw,2.6rem)/1 Bungee;margin:8px 0 6px}
+.ticket .note{margin:0;color:var(--mute);font-size:.95rem}
+.seg{display:inline-flex;background:var(--frost);border-radius:999px;padding:4px;margin-top:12px}
+.seg button{font:700 .9rem "DM Sans";border:0;background:none;border-radius:999px;padding:8px 13px;cursor:pointer;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{display:flex;flex-direction:column;align-items:center;min-width:92px}
+.tag b{font:400 1.35rem/1 Bungee;background:var(--c,var(--mint));padding:14px 12px 12px;border-radius:40px 40px 12px 12px;min-width:92px;text-align:center}
+.tag i{display:block;width:12px;height:22px;background:var(--stick);border-radius:0 0 6px 6px}
+.tag small{font-size:.82rem;color:var(--mute);margin-top:4px;text-align:center}
+/* chart */
+section{padding:80px 0}
+.sh{font-size:clamp(2.1rem,4.6vw,3.5rem)}
+.sh span{color:var(--rasp)}
+.sub{color:var(--mute);max-width:60ch;margin:14px 0 40px}
+.chart{background:#fff;border-radius:34px;padding:40px 30px 30px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 22px}
+.pop{display:flex;flex-direction:column;align-items:center;text-align:center}
+.pop .body{width:100%;max-width:220px;aspect-ratio:3/3.6;border-radius:110px 110px 30px 30px;background:var(--c);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px 16px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.pop:hover .body{transform:rotate(-3deg) translateY(-4px)}
+.pop .body h3{font-size:1.25rem;line-height:1.05}
+.pop .body .price{font:400 2.4rem/1 Bungee;margin-top:12px}
+.pop .body small{font-weight:700;font-size:.85rem}
+.pop .stick{width:26px;height:46px;background:var(--stick);border-radius:0 0 13px 13px}
+.pop p{margin:10px 0 0;color:var(--mute);font-size:.95rem;max-width:26ch}
+.pop.dark .body{color:#fff}
+.chart .foot{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;border-top:2px dashed #D7E3EE;padding-top:24px}
+.chart .foot p{margin:0;color:var(--mute);max-width:60ch}
+/* extras as price list in two columns */
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.extras .ph{border-radius:30px;overflow:hidden}
+.extras .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.menu{columns:2;column-gap:30px;margin:0;padding:0;list-style:none}
+.menu li{break-inside:avoid;display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:2px dotted #CFDDEA}
+.menu li b{font-weight:500}
+.menu li span{font-weight:700;color:var(--rasp);white-space:nowrap}
+/* play panel */
+.play{background:var(--blue);color:#fff;border-radius:34px;padding:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.play h2{font-size:clamp(2rem,4vw,3rem)}
+.play p{color:#DCE1FF;margin:14px 0 22px;max-width:48ch}
+.play ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.play li{background:rgba(255,255,255,.1);border-radius:18px;padding:14px 16px}
+.play li b{display:block;font:400 1rem/1.1 Bungee;color:var(--lemon);margin-bottom:4px}
+.play .btn{background:var(--lemon);color:var(--ink)}
+.find{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.find div{background:#fff;border-radius:26px;padding:24px}
+.find h3{font-size:1.2rem;margin-bottom:10px;color:var(--rasp)}
+.find address{font-style:normal}
+.find a.tel{font:400 1.7rem/1 Bungee;text-decoration:none;color:var(--ink)}
+footer{padding:20px 0 44px;color:var(--mute);font-size:.92rem}
+footer p{margin:0 0 8px;max-width:92ch}
+@media (max-width:1000px){
+  nav{display:none}
+  .hero{grid-template-columns:1fr;gap:30px;padding-top:30px}
+  .lolly{width:min(100%,320px)}
+  .ticket{grid-template-columns:1fr}
+  .chart{grid-template-columns:1fr 1fr}
+  .extras{grid-template-columns:1fr}
+  .play{grid-template-columns:1fr;padding:32px 24px}
+  .find{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .wrap.hd{padding:12px 16px}
+  .hd .btn{display:none}
+  .hero h1{font-size:2.5rem}
+  .hero .lede{font-size:1.08rem}
+  .hero .cta .btn{flex:1}
+  .lolly .bite{width:92px;height:92px;font-size:.85rem;right:0}
+  .ticket{padding:22px 18px}
+  .ticket .btn{width:100%}
+  .tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+  .tag,.tag b{min-width:0;width:100%}
+  .tag b{font-size:1rem;padding:12px 4px 10px}
+  .tag small{font-size:.74rem}
+  .lolly{width:165px;padding-bottom:40px}
+  .lolly::after{width:30px;height:60px;margin-left:-15px}
+  .lolly .top{border-width:7px}
+  .lolly .bite{width:78px;height:78px;font-size:.72rem;right:-30px}
+  .hero{gap:16px;padding:18px 16px 28px}
+  .hero .lede{margin:14px 0 18px}
+  section{padding:56px 0}
+  .chart{grid-template-columns:1fr 1fr;padding:28px 14px 22px;gap:26px 12px}
+  .pop .body h3{font-size:.95rem}
+  .pop .body .price{font-size:1.7rem}
+  .pop p{font-size:.86rem}
+  .menu{columns:1}
+  .play ul{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div style="background:#17201B;color:#fff;font:500 14px/1.4 system-ui,sans-serif;padding:9px 20px;position:relative;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;z-index:2147483000"><span style="display:inline-flex;align-items:center;gap:8px"><svg style="height:12px;width:auto;color:#fff" viewBox="0 0 487.5 208.5" role="img" aria-label="Pete Owen Design logo"><path fill="currentColor" d="M487.5,10.6h-41.2v15.5c-15.3-10.6-33.9-16.8-53.8-16.8-30.1,0-57,14.1-74.4,36-17.4-21.9-44.3-36-74.4-36s-57,14.1-74.4,36c-17.4-21.9-44.3-36-74.4-36C44.8,9.4,3.8,48,0,96.9h-.3v100.3h41.2v-14.5c15.3,10.6,33.9,16.8,53.8,16.8,30.1,0,57-14.1,74.4-36,17.4,21.9,44.3,36,74.4,36s57-14.1,74.4-36c17.4,21.9,44.3,36,74.4,36,52.4,0,95.1-42.6,95.1-95.1s0-1.3,0-1.9h0V10.6h0ZM94.6,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8ZM243.5,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8ZM392.4,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8Z"/></svg> Design idea by Pete Owen Design. Not the live Polar Palace website.</span><a href="../index.html" style="color:#fff;font-weight:700">Back to the start</a></div>
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#">Polar Palace<small>Play and Party Centre, Winsford</small></a>
+    <nav aria-label="Main"><a href="#parties">Parties</a><a href="#today">Times and prices</a><a href="#play">Play</a><a href="#find">Find us</a></nav>
+    <a class="btn" href="https://standard.polarpalace.bookedit.online/party-bookings/">Book a party</a>
+  </div>
+</header>
+<div class="awning" aria-hidden="true"></div>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>The coolest <span>parties</span> in Cheshire.</h1>
+    <p class="lede">Seven party flavours, from Disco and Snow to Football Champions, plus play every day for ages 0 to 12.</p>
+    <div class="cta"><a class="btn r" href="#parties">See the party chart</a><a class="btn l" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book play</a></div>
+  </div>
+  <div class="lolly"><div class="top"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0036.jpg" alt="The Polar Palace party room with its Happy Birthday mural"></div><span class="bite">10% off Thu and Fri</span></div>
+</div>
+
+<div class="wrap">
+  <div class="ticket" id="today">
+    <div>
+      <div class="lab" data-lab>Open today</div>
+      <div class="hrs" data-hrs>10am to 5.45pm</div>
+      <p class="note">Last entry one hour before closing.</p>
+      <div class="seg" role="group" aria-label="Which times to show"><button type="button" data-mode="term" aria-pressed="true">Term time</button><button type="button" data-mode="hol" aria-pressed="false">School holidays</button></div>
+    </div>
+    <div class="tags" aria-label="Today's entry prices">
+      <div class="tag" style="--c:var(--mint)"><b data-p4>£10.95</b><i></i><small>Ages 4 to 12</small></div>
+      <div class="tag" style="--c:var(--lemon)"><b data-p1>£9.95</b><i></i><small>Ages 1 to 3</small></div>
+      <div class="tag" style="--c:var(--orange)"><b>£1</b><i></i><small>Under 1s</small></div>
+      <div class="tag" style="--c:#B9C2FF"><b>£2</b><i></i><small>Grown ups</small></div>
+    </div>
+    <a class="btn k" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book a play session</a>
+  </div>
+</div>
+
+<section id="parties" aria-labelledby="pt">
+  <div class="wrap">
+    <h2 class="sh" id="pt">Pick your <span>flavour</span></h2>
+    <p class="sub">Every party lasts 1 hour 45 minutes, with a party host, a throne for the birthday child, invitations to download, and your cake presented and wrapped.</p>
+    <div class="chart">
+      <div class="pop" style="--c:#C9E9FF"><div class="body"><h3>Disco and Snow</h3><div class="price">£240</div><small>for 12 children</small></div><div class="stick"></div><p>Disco, snow machine, food, ice cream, juice, sweet cones.</p></div>
+      <div class="pop dark" style="--c:var(--rasp)"><div class="body"><h3>Princess Sparkle and Shine</h3><div class="price">£240</div><small>for 12 children</small></div><div class="stick"></div><p>Glitter faces, hair braids, a crown or tiara.</p></div>
+      <div class="pop" style="--c:var(--mint)"><div class="body"><h3>Football Champions</h3><div class="price">£240</div><small>for 12 children</small></div><div class="stick"></div><p>Skills session, penalty shoot-out, team bibs.</p></div>
+      <div class="pop" style="--c:var(--orange)"><div class="body"><h3>Build a Bear</h3><div class="price">£300</div><small>for 12 children</small></div><div class="stick"></div><p>Everyone builds a bear, with a wish heart.</p></div>
+      <div class="pop" style="--c:var(--lemon)"><div class="body"><h3>Class Party</h3><div class="price">£375</div><small>for 30 children</small></div><div class="stick"></div><p>The whole class, with play, food and juice.</p></div>
+      <div class="pop dark" style="--c:var(--blue)"><div class="body"><h3>VIP</h3><div class="price">£450</div><small>for 20, whole palace</small></div><div class="stick"></div><p>Private hire with disco, snow and deluxe bags.</p></div>
+      <div class="pop dark" style="--c:var(--ink)"><div class="body"><h3>Nerf Wars</h3><div class="price">£450</div><small>for 20, whole palace</small></div><div class="stick"></div><p>Private hire, all Nerf kit provided.</p></div>
+      <div class="pop" style="--c:#FFD3E0"><div class="body"><h3>Add a character</h3><div class="price">£50</div><small>30 minute visit</small></div><div class="stick"></div><p>Polar Bear Pete, Mickey, Minnie, Tigger and friends.</p></div>
+      <div class="foot"><p>Extra children £20 each (£12.50 on a Class Party). A small deposit holds your date. Book any party for a Thursday or Friday at 4pm and take 10% off.</p><a class="btn r" href="https://standard.polarpalace.bookedit.online/party-bookings/">Book a party</a></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="ex" style="padding-top:0">
+  <div class="wrap extras">
+    <div class="ph"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0033.jpg" alt="Polar Bear Pete in costume sliding down the three lane slide" style="object-position:50% 72%"></div>
+    <div>
+      <h2 class="sh" id="ex">Sprinkles <span>on top</span></h2>
+      <p class="sub" style="margin-bottom:22px">Little extras to add when you book.</p>
+      <ul class="menu">
+        <li><b>Pass the parcel</b><span>£15</span></li>
+        <li><b>Sandwich platter</b><span>£15</span></li>
+        <li><b>Themed foil balloon</b><span>£5</span></li>
+        <li><b>Go-karts, VIP parties</b><span>£4 each</span></li>
+        <li><b>Hats and blowers</b><span>£1.50 each</span></li>
+        <li><b>Deluxe party bags</b><span>£1.50 each</span></li>
+        <li><b>Ice cream, Class Party</b><span>£1.50 each</span></li>
+        <li><b>Character visit</b><span>£50</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="play" aria-labelledby="pl" style="padding-top:0">
+  <div class="wrap">
+    <div class="play">
+      <div>
+        <h2 id="pl">Not a party day? Come and play.</h2>
+        <p>One of the biggest play frames in Cheshire, with a three lane slide, a football and basketball court, go-karts and areas just for under 2s and under 5s. In term time, Monday to Friday is Toddler Time with unlimited play.</p>
+        <a class="btn" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book a play session</a>
+      </div>
+      <ul>
+        <li><b>Membership</b>£35 a month, one child and one grown up, unlimited visits.</li>
+        <li><b>Nerf Wars night</b>Last Friday of the month, £9.95 a child.</li>
+        <li><b>Sensory room</b>Monday to Friday in term time.</li>
+        <li><b>Come back free</b>Every entry includes a return visit within 5 days.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="find" aria-labelledby="fd" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sh" id="fd" style="margin-bottom:26px">Find the <span>kiosk</span></h2>
+    <div class="find">
+      <div><h3>Call</h3><a class="tel" href="tel:01606863623">01606 863623</a><p style="margin:10px 0 0;color:var(--mute)">For parties, questions and allergies.</p></div>
+      <div><h3>Visit</h3><address>Unit 10, Pineapple Park<br>Road One, Winsford Industrial Estate<br>Winsford, Cheshire CW7 3PR</address></div>
+      <div><h3>Opening times</h3><p style="margin:0">Term time: Mon to Wed 10am to 2pm, Thu and Fri 10am to 5.30pm, weekends 10am to 5.45pm.<br>School holidays: weekdays 10am to 4pm, weekends 10am to 5.45pm.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Design idea by Pete Owen Design. Prices, times, party packages, extras, address and phone number are Polar Palace's own, from its current website. Headlines and short descriptions are proposed copy. Photographs are Polar Palace's own, from its website.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var T={0:[10,17.75],1:[10,14],2:[10,14],3:[10,14],4:[10,17.5],5:[10,17.5],6:[10,17.75]};
+  var H={0:[10,17.75],1:[10,16],2:[10,16],3:[10,16],4:[10,16],5:[10,16],6:[10,17.75]};
+  var names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  function f(x){var h=Math.floor(x),m=Math.round((x-h)*60),s=h>12?h-12:h;return s+(m?"."+(m<10?"0":"")+m:"")+(h>=12?"pm":"am");}
+  var mode="term";
+  function draw(){
+    var t=mode==="term"?T:H,d=new Date(),day=d.getDay(),now=d.getHours()+d.getMinutes()/60,o=t[day];
+    var lab=document.querySelector("[data-lab]"),hrs=document.querySelector("[data-hrs]");
+    if(now<o[0]){lab.textContent="Opens today, "+names[day];hrs.textContent=f(o[0])+" to "+f(o[1]);}
+    else if(now<o[1]){lab.textContent="Open now, "+names[day];hrs.textContent="Until "+f(o[1]);}
+    else{var n=(day+1)%7;lab.textContent="Closed now. Open "+names[n];hrs.textContent=f(t[n][0])+" to "+f(t[n][1]);}
+    var peak=mode==="hol"||day===0||day===6;
+    document.querySelector("[data-p4]").textContent=peak?"£10.95":"£9.95";
+    document.querySelector("[data-p1]").textContent=peak?"£9.95":"£6.95";
+  }
+  document.querySelectorAll("[data-mode]").forEach(function(b){b.addEventListener("click",function(){mode=b.getAttribute("data-mode");document.querySelectorAll("[data-mode]").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});draw();});});
+  draw();
+})();
+</script>
+</body>
+</html>

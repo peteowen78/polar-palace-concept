@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Polar Palace: B, Pick a Lane (direction) (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0A2457;--slide:#1C63D6;--lane:#2E7BEA;--crys:#BFE3FF;--white:#F5FAFF;--yel:#FFD23F;--red:#EF3B2D;--mute:#AFC6EC}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--deep);color:var(--white);font:400 1.0625rem/1.55 Rubik,system-ui,sans-serif}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Big Shoulders Display",Rubik,sans-serif;font-weight:900;text-transform:uppercase;line-height:.88;margin:0;letter-spacing:.005em}
+/* the slide's own ice-crystal pattern, drawn as a repeating tile */
+.crystal{background-color:var(--slide);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='90' viewBox='0 0 120 90'%3E%3Cpath d='M60 18l8 10 12-4-6 12 10 8-14 2-2 14-8-10-8 10-2-14-14-2 10-8-6-12 12 4z' fill='%23BFE3FF' fill-opacity='.22'/%3E%3Cpath d='M0 63l6 7 9-3-4 9 7 6-10 1-2 10-6-7-6 7-2-10-10-1 7-6-4-9 9 3z M120 63l6 7 9-3-4 9 7 6-10 1-2 10-6-7-6 7-2-10-10-1 7-6-4-9 9 3z' fill='%23BFE3FF' fill-opacity='.14'/%3E%3C/svg%3E")}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:700 1rem/1 Rubik,sans-serif;text-decoration:none;padding:16px 22px;border-radius:12px;min-height:52px;white-space:nowrap;transition:transform .15s}
+.btn:active{transform:translateY(2px)}
+.btn.y{background:var(--yel);color:var(--deep)}
+.btn.o{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px var(--white)}
+.btn.d{background:var(--deep);color:#fff}
+header{position:relative;z-index:2}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+.logo{font:900 1.9rem/0.85 "Big Shoulders Display";text-transform:uppercase;text-decoration:none;letter-spacing:.02em}
+.logo small{display:block;font:500 .72rem/1 Rubik;letter-spacing:.14em;color:var(--crys);margin-top:5px}
+nav{display:flex;gap:26px;font-weight:500}
+nav a{text-decoration:none;opacity:.9}
+nav a:hover{opacity:1;color:var(--yel)}
+.hd .btn{padding:12px 18px;min-height:44px}
+/* hero: three lanes */
+.hero{position:relative;padding:20px 0 0}
+.hero h1{font-size:clamp(4.6rem,13vw,11.5rem);letter-spacing:-.01em}
+.hero h1 span{color:var(--yel)}
+.hero .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:end;margin-top:14px}
+.hero .lede{font-size:1.2rem;color:var(--crys);max-width:42ch;margin:0}
+.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:34px;perspective:900px}
+.ln{position:relative;border-radius:22px 22px 0 0;overflow:hidden;min-height:430px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;text-decoration:none;color:var(--white);isolation:isolate}
+.ln img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.ln::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,36,87,0) 25%,rgba(10,36,87,.92) 85%)}
+.ln:hover img{transform:scale(1.04)}
+.ln .n{position:absolute;top:18px;left:22px;font:900 4.6rem/1 "Big Shoulders Display";color:var(--yel)}
+.ln h2{font-size:clamp(2.4rem,4vw,3.4rem);margin-bottom:8px}
+.ln p{margin:0 0 4px;color:#DCE8FA;max-width:30ch}
+.ln b{color:var(--yel)}
+/* today strip */
+.today{background:var(--white);color:var(--deep);border-radius:0 0 22px 22px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,.8fr) minmax(0,1.1fr);gap:24px;padding:26px 28px;align-items:center}
+.today .lab{font:700 .95rem Rubik;color:var(--slide)}
+.today .hrs{white-space:nowrap;font:900 clamp(2.2rem,3.6vw,3rem)/.9 "Big Shoulders Display";text-transform:uppercase;margin-top:6px}
+.today .small{font-size:.92rem;color:#4A5F86;margin:6px 0 0}
+.seg{display:inline-flex;gap:4px;margin-top:10px;background:#E3ECFA;border-radius:10px;padding:4px}
+.seg button{white-space:nowrap;font:500 .9rem Rubik;border:0;background:none;border-radius:8px;padding:8px 12px;color:var(--deep);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--deep);color:#fff}
+.pr{margin:0;display:grid;grid-template-columns:auto auto;gap:4px 14px;justify-content:start}
+.pr dt{color:#4A5F86}.pr dd{margin:0;font-weight:700}
+.pr .h{grid-column:1/-1;font-weight:700;color:var(--slide);margin-bottom:2px}
+/* sections */
+section{padding:84px 0}
+.sh{font-size:clamp(3rem,7vw,5.6rem)}
+.sh span{color:var(--yel)}
+.sub{color:var(--crys);max-width:58ch;margin:14px 0 36px;font-size:1.1rem}
+/* scoreboard of parties */
+.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:rgba(191,227,255,.18);border-radius:18px;overflow:hidden}
+.p{background:var(--deep);padding:22px 24px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline}
+.p h3{font-size:2.1rem}
+.p .cost{font:900 2.1rem/1 "Big Shoulders Display";color:var(--yel);text-align:right}
+.p .cost small{display:block;font:500 .82rem Rubik;color:var(--crys);text-transform:none}
+.p p{grid-column:1/-1;margin:4px 0 0;color:#C9D9F2;font-size:.98rem}
+.p.priv{background:var(--slide)}
+.p.priv .k{display:inline-block;font:700 .78rem Rubik;background:var(--yel);color:var(--deep);border-radius:6px;padding:3px 8px;margin-bottom:8px}
+.after{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.after p{margin:0;color:var(--crys)}
+/* nerf night: full bleed */
+.nerf{position:relative;padding:0;overflow:hidden}
+.nerf .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:460px}
+.nerf .txt{padding:64px 48px 64px max(24px,calc((100vw - 1240px)/2 + 24px));display:flex;flex-direction:column;justify-content:center;gap:16px}
+.nerf .txt .sh{font-size:clamp(3rem,6vw,5rem)}
+.nerf .txt p{margin:0;max-width:44ch;color:#E6EEFB}
+.nerf .facts{display:flex;gap:28px;flex-wrap:wrap}
+.nerf .facts div{font:900 2.4rem/1 "Big Shoulders Display";color:var(--yel)}
+.nerf .facts small{display:block;font:500 .85rem Rubik;color:#E6EEFB}
+.nerf .pic{position:relative;min-height:320px}
+.nerf .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* little ones: vertical stack with stats */
+.little{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.little div{border-top:3px solid var(--yel);padding-top:16px}
+.little h3{font-size:1.9rem;margin-bottom:8px}
+.little p{margin:0;color:#C9D9F2}
+.member{background:var(--yel);color:var(--deep);border-radius:22px;padding:36px 40px;display:grid;grid-template-columns:auto 1fr auto;gap:34px;align-items:center}
+.member .big{font:900 clamp(4rem,9vw,7rem)/.8 "Big Shoulders Display"}
+.member h2{font-size:2.4rem;margin-bottom:8px}
+.member p{margin:0;max-width:54ch}
+.find{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+.find address{font-style:normal;font-size:1.2rem;line-height:1.55}
+.find .tel{display:block;font:900 clamp(2.6rem,5vw,3.8rem)/1 "Big Shoulders Display";color:var(--yel);text-decoration:none;margin:18px 0 8px}
+.hours{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px 18px;font-size:1rem}
+.hours .hh{font-weight:700;color:var(--yel)}
+.hours span{color:#DCE8FA}
+.ph-only{display:none}
+footer{border-top:1px solid rgba(191,227,255,.25);padding:28px 0 44px;color:var(--mute);font-size:.92rem}
+footer p{margin:0 0 8px;max-width:92ch}
+@media (max-width:1000px){
+  nav{display:none}
+  .hero .row{grid-template-columns:1fr}
+  .lanes{grid-template-columns:1fr;gap:8px}
+  .ln{min-height:250px;border-radius:18px}
+  .today{grid-template-columns:1fr 1fr;border-radius:18px;margin-top:8px}
+  .today .go{grid-column:1/-1}
+  .board{grid-template-columns:1fr}
+  .nerf .in{grid-template-columns:1fr}
+  .nerf .txt{padding:56px 24px}
+  .little{grid-template-columns:1fr 1fr}
+  .member{grid-template-columns:1fr;gap:16px;padding:30px 24px}
+  .find{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .wrap.hd{padding:12px 16px}
+  .hd .btn{display:none}
+  .hero h1{font-size:4.4rem}
+  .logo{line-height:1}
+  .hero{padding-top:4px}
+  .lanes{margin:20px -16px 0;padding:0 16px 4px;display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .ln{min-height:210px;padding:18px;scroll-snap-align:start;border-radius:18px}
+  .ln .n{font-size:2.6rem;top:12px;left:16px}
+  .ln h2{font-size:2.1rem}
+  .ln p{font-size:.92rem}
+  .today{grid-template-columns:1fr;padding:22px 18px}
+  .today .go .btn{width:100%}
+  section{padding:60px 0}
+  .p{padding:18px;grid-template-columns:1fr}
+  .p .cost{text-align:left}
+  .nerf .txt{padding:48px 16px}
+  .little{grid-template-columns:1fr}
+  .hours{grid-template-columns:auto 1fr;font-size:.95rem}
+  .hours .hh{display:none}
+  .hours .hide{display:none}
+  .ph-only{display:block}
+  .hours::before{content:"Term time";grid-column:1/-1;font-weight:700;color:var(--yel)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .lanes .ln{animation:in .8s cubic-bezier(.16,1,.3,1) both}
+  .lanes .ln:nth-child(2){animation-delay:.12s}.lanes .ln:nth-child(3){animation-delay:.24s}
+  @keyframes in{from{opacity:0;transform:translateY(40px)}}
+}
+</style>
+</head>
+<body>
+<div style="background:#17201B;color:#fff;font:500 14px/1.4 system-ui,sans-serif;padding:9px 20px;position:relative;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;z-index:2147483000"><span style="display:inline-flex;align-items:center;gap:8px"><svg style="height:12px;width:auto;color:#fff" viewBox="0 0 487.5 208.5" role="img" aria-label="Pete Owen Design logo"><path fill="currentColor" d="M487.5,10.6h-41.2v15.5c-15.3-10.6-33.9-16.8-53.8-16.8-30.1,0-57,14.1-74.4,36-17.4-21.9-44.3-36-74.4-36s-57,14.1-74.4,36c-17.4-21.9-44.3-36-74.4-36C44.8,9.4,3.8,48,0,96.9h-.3v100.3h41.2v-14.5c15.3,10.6,33.9,16.8,53.8,16.8,30.1,0,57-14.1,74.4-36,17.4,21.9,44.3,36,74.4,36s57-14.1,74.4-36c17.4,21.9,44.3,36,74.4,36,52.4,0,95.1-42.6,95.1-95.1s0-1.3,0-1.9h0V10.6h0ZM94.6,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8ZM243.5,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8ZM392.4,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8Z"/></svg> Design idea by Pete Owen Design. Not the live Polar Palace website.</span><a href="../index.html" style="color:#fff;font-weight:700">Back to the start</a></div>
+<div class="crystal">
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#">Polar Palace<small>WINSFORD, CHESHIRE</small></a>
+    <nav aria-label="Main"><a href="#today">Times and prices</a><a href="#parties">Parties</a><a href="#nerf">Nerf Wars</a><a href="#little">Under 5s</a><a href="#find">Find us</a></nav>
+    <a class="btn y" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book play</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Pick a <span>lane.</span></h1>
+    <div class="row">
+      <p class="lede">Play, party or battle. Indoor fun for ages 0 to 12 on Winsford Industrial Estate, open every day.</p>
+      <a class="btn y" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book a play session</a>
+    </div>
+    <div class="lanes">
+      <a class="ln" href="#today"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2016/08/play-area-slide-01.jpg" alt="Children racing down the three lane slide"><span class="n">1</span><h2>Play</h2><p>The three lane slide, the big frame, a football court and go-karts. <b>From £6.95.</b></p></a>
+      <a class="ln" href="#parties"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0036.jpg" alt="The party room with a Happy Birthday mural"><span class="n">2</span><h2>Party</h2><p>Seven party packages, from Disco and Snow to Football Champions. <b>From £240.</b></p></a>
+      <a class="ln" href="#nerf"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0034.jpg" alt="The multi-level play frame with its purple tube slide"><span class="n">3</span><h2>Battle</h2><p>Nerf Wars night, the last Friday of every month. <b>£9.95 a child.</b></p></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<main>
+<div class="wrap">
+  <div class="today" id="today">
+    <div>
+      <div class="lab" data-lab>Open today</div>
+      <div class="hrs" data-hrs>10am to 5.45pm</div>
+      <div class="seg" role="group" aria-label="Which times to show"><button type="button" data-mode="term" aria-pressed="true">Term time</button><button type="button" data-mode="hol" aria-pressed="false">School holidays</button></div>
+    </div>
+    <dl class="pr">
+      <div class="h" data-ph>Today's prices</div>
+      <dt>Ages 4 to 12</dt><dd data-p4>£10.95</dd>
+      <dt>Ages 1 to 3</dt><dd data-p1>£9.95</dd>
+    </dl>
+    <dl class="pr">
+      <div class="h">Always</div>
+      <dt>Under 1s</dt><dd>£1</dd>
+      <dt>Grown ups</dt><dd>£2</dd>
+    </dl>
+    <div class="go"><a class="btn d" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book a slot</a><p class="small">Come back free within 5 days. Last entry one hour before closing.</p></div>
+  </div>
+</div>
+
+<section id="parties" aria-labelledby="pt">
+  <div class="wrap">
+    <h2 class="sh" id="pt">Seven ways to <span>party</span></h2>
+    <p class="sub">Every party runs 1 hour 45 minutes with a party host, a throne for the birthday child, downloadable invitations, and your cake presented and wrapped.</p>
+    <div class="board">
+      <div class="p"><h3>Disco and Snow</h3><div class="cost">£240<small>for 12 children</small></div><p>Disco and snow machine, hot and cold food, ice cream, juice and sweet cones.</p></div>
+      <div class="p"><h3>Football Champions</h3><div class="cost">£240<small>for 12 children</small></div><p>Skills session, penalty shoot-out, dribble and target challenges, team bibs and a captain's armband.</p></div>
+      <div class="p"><h3>Princess Sparkle and Shine</h3><div class="cost">£240<small>for 12 children</small></div><p>Glitter faces and a colour hair braid for everyone, a crown or tiara for the birthday child.</p></div>
+      <div class="p"><h3>Build a Bear</h3><div class="cost">£300<small>for 12 children</small></div><p>Every guest builds a bear to take home, with a certificate and wish heart.</p></div>
+      <div class="p"><h3>Class Party</h3><div class="cost">£375<small>for 30 children</small></div><p>The whole class, play, food and juice. £12.50 for each extra child.</p></div>
+      <div class="p priv"><div><span class="k">Whole palace</span><h3>VIP</h3></div><div class="cost">£450<small>for 20 children</small></div><p>Private hire, 9.45 to 11.30am or 4 to 5.45pm. Disco and snow, deluxe party bags, sandwiches for the grown ups.</p></div>
+      <div class="p priv"><div><span class="k">Whole palace</span><h3>Nerf Wars</h3></div><div class="cost">£450<small>for 20 children</small></div><p>Private hire with all the Nerf kit. Unlimited grown ups.</p></div>
+      <div class="p"><h3>Add a character</h3><div class="cost">£50<small>each, 30 minutes</small></div><p>Polar Bear Pete, Mickey, Minnie, Tigger, Winnie the Pooh and more.</p></div>
+    </div>
+    <div class="after"><a class="btn y" href="https://standard.polarpalace.bookedit.online/party-bookings/">Book a party</a><p>Thursday or Friday at 4pm? Take 10% off. Or call <a href="tel:01606863623">01606 863623</a>.</p></div>
+  </div>
+</section>
+
+<section class="nerf crystal" id="nerf" aria-labelledby="nf">
+  <div class="in">
+    <div class="txt">
+      <h2 class="sh" id="nf">Last Friday.<br>Every month.</h2>
+      <p>Nerf Wars night takes over the whole palace: capture the flag, target shooting and Nerf zombies. All the kit is here, or bring your own blaster (no ammo).</p>
+      <div class="facts"><div>£9.95<small>per child</small></div><div>£2<small>per grown up</small></div></div>
+      <div><a class="btn y" href="https://standard.polarpalace.bookedit.online/nerf-sessions/">Book Nerf night</a></div>
+    </div>
+    <div class="pic"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0038.jpg" alt="A giant noughts and crosses board inside the play frame"></div>
+  </div>
+</section>
+
+<section id="little" aria-labelledby="lt">
+  <div class="wrap">
+    <h2 class="sh" id="lt">Smaller <span>lanes</span></h2>
+    <p class="sub">Monday to Friday in term time is Toddler Time: unlimited play and no need to book.</p>
+    <div class="little">
+      <div><h3>Under 2s area</h3><p>A dedicated area of its own, with baby change and bottle warming nearby.</p></div>
+      <div><h3>Under 5s area</h3><p>Two extra levels added in 2017, plus trikes to ride around.</p></div>
+      <div><h3>Sensory room</h3><p>Lights, sounds and textures, Monday to Friday in term time.</p></div>
+      <div><h3>Toddler activities</h3><p>Wednesday to Friday: messy play, crafts, discos and stories, included in entry.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="member">
+    <div class="big">£35</div>
+    <div><h2>Unlimited, every month</h2><p>One child and one grown up, every day of the week, school holidays included. Extra child £10, extra grown up £5. Cancel any time.</p></div>
+    <a class="btn d" href="https://bookedit.online/polar-palace-membership/">Join</a>
+  </div>
+</div>
+
+<section id="find" aria-labelledby="fd">
+  <div class="wrap find">
+    <div>
+      <h2 class="sh" id="fd">Find us</h2>
+      <a class="tel" href="tel:01606863623">01606 863623</a>
+      <address>Unit 10, Pineapple Park, Road One<br>Winsford Industrial Estate<br>Winsford, Cheshire CW7 3PR</address>
+      <p style="color:var(--crys)">Free parking. Café with hot food, coffee and slush. Free wifi.</p>
+    </div>
+    <div class="hours" aria-label="Opening times">
+      <span class="hh"></span><span class="hh">Term time</span><span class="hh hide">Holidays</span>
+      <b>Mon to Wed</b><span>10am to 2pm</span><span class="hide">10am to 4pm</span>
+      <b>Thu and Fri</b><span>10am to 5.30pm</span><span class="hide">10am to 4pm</span>
+      <b>Sat and Sun</b><span>10am to 5.45pm</span><span class="hide">10am to 5.45pm</span>
+      <b class="ph-only" style="grid-column:1/-1;color:var(--crys);font-weight:400;margin-top:8px">Those are term time hours. School holidays: Mon to Fri 10am to 4pm, Sat and Sun 10am to 5.45pm.</b><b style="grid-column:1/-1;color:var(--crys);font-weight:400">Last entry one hour before closing.</b>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Polar Palace Play and Party Centre, Winsford. Open since 2006.</p>
+    <p>Design idea by Pete Owen Design. Prices, times, party packages, address and phone number are Polar Palace's own, from its current website. Headlines and short descriptions are proposed copy. Photographs are Polar Palace's own, from its website. The ice-crystal pattern is drawn from the three lane slide.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var T={0:[10,17.75],1:[10,14],2:[10,14],3:[10,14],4:[10,17.5],5:[10,17.5],6:[10,17.75]};
+  var H={0:[10,17.75],1:[10,16],2:[10,16],3:[10,16],4:[10,16],5:[10,16],6:[10,17.75]};
+  var names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  function f(x){var h=Math.floor(x),m=Math.round((x-h)*60),s=h>12?h-12:h;return s+(m?"."+(m<10?"0":"")+m:"")+(h>=12?"pm":"am");}
+  var mode="term";
+  function draw(){
+    var t=mode==="term"?T:H,d=new Date(),day=d.getDay(),now=d.getHours()+d.getMinutes()/60,o=t[day];
+    var lab=document.querySelector("[data-lab]"),hrs=document.querySelector("[data-hrs]");
+    if(now<o[0]){lab.textContent="Opens today, "+names[day];hrs.textContent=f(o[0])+" to "+f(o[1]);}
+    else if(now<o[1]){lab.textContent="Open now, "+names[day];hrs.textContent="Until "+f(o[1]);}
+    else{var n=(day+1)%7;lab.textContent="Closed now. Open "+names[n];hrs.textContent=f(t[n][0])+" to "+f(t[n][1]);}
+    var peak=mode==="hol"||day===0||day===6;
+    document.querySelector("[data-ph]").textContent=peak?"Peak prices":"Term time weekday prices";
+    document.querySelector("[data-p4]").textContent=peak?"£10.95":"£9.95";
+    document.querySelector("[data-p1]").textContent=peak?"£9.95":"£6.95";
+  }
+  document.querySelectorAll("[data-mode]").forEach(function(b){b.addEventListener("click",function(){mode=b.getAttribute("data-mode");document.querySelectorAll("[data-mode]").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});draw();});});
+  draw();
+})();
+</script>
+</body>
+</html>

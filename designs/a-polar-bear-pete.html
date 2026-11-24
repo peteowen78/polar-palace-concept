@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Polar Palace: A, Polar Bear Pete (direction) (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ice:#DDF1FC;--ice2:#B9E2F7;--navy:#12306B;--red:#E5332A;--yel:#FFD23F;--snow:#FBFEFF;--ink:#0F2350;--mute:#43577F}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--snow);color:var(--ink);font:400 1.0625rem/1.55 Outfit,system-ui,sans-serif}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Lilita One",Outfit,sans-serif;font-weight:400;line-height:.98;margin:0;letter-spacing:.005em}
+/* the scarf: red and yellow stripes, Pete's own */
+.scarf{background:repeating-linear-gradient(-45deg,var(--red) 0 16px,var(--yel) 16px 32px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:800 1.05rem/1 Outfit,sans-serif;text-decoration:none;padding:16px 24px;border-radius:999px;min-height:52px;border:3px solid var(--navy);box-shadow:0 5px 0 var(--navy);transition:transform .15s,box-shadow .15s;white-space:nowrap}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--navy)}
+.btn.r{background:var(--red);color:#fff}
+.btn.y{background:var(--yel);color:var(--navy)}
+.btn.w{background:#fff;color:var(--navy)}
+/* header */
+header{background:var(--ice);border-bottom:3px solid var(--navy)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:52px;height:52px;flex:none}
+.logo b{font:400 1.75rem/0.9 "Lilita One";color:var(--navy)}
+.logo b span{color:var(--red)}
+.logo small{display:block;font:700 .72rem/1 Outfit;letter-spacing:.08em;color:var(--mute);margin-top:4px}
+nav{display:flex;gap:22px;font-weight:700}
+nav a{text-decoration:none}
+nav a:hover{color:var(--red)}
+.hd .btn{padding:11px 18px;min-height:44px}
+/* hero */
+.hero{background:var(--ice);position:relative;overflow:hidden;padding:36px 0 0}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
+.hero h1{font-size:clamp(3rem,6.4vw,5.6rem);color:var(--navy)}
+.hero h1 span{color:var(--red)}
+.hero .lede{font-size:1.2rem;max-width:36ch;margin:18px 0 26px;color:var(--mute)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;padding-bottom:56px}
+.say{position:relative;display:inline-block;background:#fff;border:3px solid var(--navy);border-radius:22px;padding:10px 16px;font-weight:700;margin-bottom:20px}
+.say::after{content:"";position:absolute;left:28px;bottom:-14px;width:22px;height:22px;background:#fff;border-right:3px solid var(--navy);border-bottom:3px solid var(--navy);transform:rotate(45deg)}
+.floe{position:relative;align-self:end}
+.floe .ph{border:4px solid var(--navy);border-bottom:0;border-radius:200px 200px 0 0;overflow:hidden;aspect-ratio:4/4.4;background:var(--ice2)}
+.floe .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.floe .tag{position:absolute;left:-18px;top:26%;transform:rotate(-6deg);background:var(--yel);border:3px solid var(--navy);border-radius:14px;padding:8px 14px;font:400 1.15rem/1.1 "Lilita One";color:var(--navy)}
+.hero .scarf{height:22px;border-top:3px solid var(--navy)}
+.flake{position:absolute;color:#fff;opacity:.9;pointer-events:none}
+.flake.f1{left:46%;top:30px;width:38px}.flake.f2{left:4%;bottom:90px;width:26px}.flake.f3{right:3%;top:60px;width:30px}
+/* today */
+.today{background:var(--navy);color:#fff;border-radius:34px;padding:30px 34px;margin:-6px 0 0;display:grid;grid-template-columns:1.2fr 1fr;gap:26px 40px;position:relative;top:-14px}
+.today .lab{font-weight:800;color:var(--yel);letter-spacing:.02em}
+.today .hrs{font:400 clamp(2.1rem,4vw,3rem)/1 "Lilita One";margin:8px 0 8px}
+.today .note{opacity:.85;margin:0;font-size:.98rem}
+.seg{display:inline-flex;background:rgba(255,255,255,.12);border-radius:999px;padding:4px;margin:14px 0 0}
+.seg button{font:700 .95rem Outfit;color:#fff;background:none;border:0;border-radius:999px;padding:9px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--navy)}
+.price{display:grid;grid-template-columns:1fr auto;gap:6px 16px;margin:0;align-content:start}
+.price dt{opacity:.9}.price dd{margin:0;font-weight:800;text-align:right}
+.price .h{grid-column:1/-1;font-weight:800;color:var(--yel);margin-bottom:4px}
+.today .acts{grid-column:1/-1;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.today .acts p{margin:0;opacity:.85;font-size:.95rem}
+/* sections */
+section{padding:72px 0}
+.sh{font-size:clamp(2.2rem,4.4vw,3.4rem);color:var(--navy);margin-bottom:12px}
+.sp{color:var(--mute);max-width:60ch;margin:0 0 34px}
+/* palace map: what's inside */
+.inside{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.room{border:3px solid var(--navy);border-radius:26px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.room img{width:100%;height:200px;object-fit:cover}
+.room div{padding:16px 18px 20px}
+.room h3{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+.room p{margin:0;color:var(--mute);font-size:.98rem}
+.room.big{grid-column:span 4}.room.big img{height:300px}
+.room.tall{grid-column:span 2}.room.tall img{height:300px}
+.room.third{grid-column:span 2}
+.room.col{background:var(--yel)}.room.col p{color:var(--navy)}
+.room.blu{background:var(--ice)}
+/* parties */
+.parties{background:var(--ice);border-top:3px solid var(--navy);border-bottom:3px solid var(--navy)}
+.pgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.pgrid .ph{border:4px solid var(--navy);border-radius:30px;overflow:hidden;transform:rotate(-1.5deg)}
+.pgrid .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.plist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.plist li{background:#fff;border:3px solid var(--navy);border-radius:18px;padding:12px 18px;display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline}
+.plist b{font:400 1.3rem/1.1 "Lilita One";color:var(--navy)}
+.plist .pr{font-weight:800;color:var(--red);white-space:nowrap}
+.plist small{grid-column:1/-1;color:var(--mute);font-size:.92rem}
+.plist li.priv{background:var(--navy);color:#fff}.plist li.priv b{color:#fff}.plist li.priv .pr{color:var(--yel)}.plist li.priv small{color:#C9D6F2}
+.deal{margin:18px 0 0;padding:14px 18px;border-radius:18px;font-weight:700;color:var(--navy);border:3px solid var(--navy)}
+.deal span{background:#fff;padding:2px 8px;border-radius:8px;line-height:1.7;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.inc{margin:20px 0 22px;color:var(--mute);font-size:.98rem}
+/* week */
+.week{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.wk{border-top:6px solid var(--red);padding:18px 4px 0}
+.wk:nth-child(2){border-color:var(--yel)}.wk:nth-child(3){border-color:var(--navy)}
+.wk h3{font-size:1.7rem;color:var(--navy);margin:6px 0 8px}
+.wk .when{font-weight:800}
+.wk p{margin:0 0 8px;color:var(--mute)}
+/* member */
+.member{background:var(--navy);color:#fff;border-radius:34px;padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center}
+.member .big{font:400 clamp(3.4rem,7vw,5.4rem)/.9 "Lilita One";color:var(--yel)}
+.member .big small{display:block;font:700 1rem Outfit;color:#fff;opacity:.85;margin-top:6px}
+.member h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:8px}
+.member p{margin:0;opacity:.9;max-width:52ch}
+/* cafe */
+.cafe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:8px}
+.cafe div{background:var(--ice);border-radius:22px;padding:18px}
+.cafe b{display:block;font:400 1.25rem/1.1 "Lilita One";color:var(--navy)}
+.cafe span{font-weight:800;color:var(--red)}
+/* find */
+.find{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.find address{font-style:normal;font-size:1.25rem;line-height:1.5;font-weight:500}
+.find .tel{font:400 clamp(2rem,4vw,2.8rem)/1 "Lilita One";color:var(--red);text-decoration:none;display:inline-block;margin:14px 0}
+.find .card{background:var(--yel);border:3px solid var(--navy);border-radius:30px;padding:28px}
+.find .card h3{font-size:1.6rem;margin-bottom:10px;color:var(--navy)}
+.find .card ul{margin:0;padding-left:20px}
+footer{border-top:3px solid var(--navy);padding:28px 0 40px;color:var(--mute);font-size:.92rem}
+footer p{margin:0 0 8px;max-width:90ch}
+@media (max-width:980px){
+  nav{display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:10px}
+  .hero .cta{padding-bottom:26px}
+  .floe{max-width:440px;margin:0 auto;width:100%}
+  .today{grid-template-columns:1fr}
+  .inside{grid-template-columns:1fr 1fr}
+  .room.big,.room.tall,.room.third{grid-column:span 2}
+  .pgrid{grid-template-columns:1fr}
+  .week{grid-template-columns:1fr}
+  .member{grid-template-columns:1fr;padding:30px 24px}
+  .cafe{grid-template-columns:1fr 1fr}
+  .find{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .wrap.hd{padding:12px 16px}
+  .hd .btn{display:none}
+  .hero{padding-top:20px}
+  .hero h1{font-size:2.6rem}
+  .say{font-size:.92rem;padding:8px 13px;margin-bottom:14px}
+  .hero .lede{font-size:1.05rem;margin:10px 0 16px}
+  .hero .cta{gap:10px}
+  .hero .cta .btn{flex:1;min-height:48px;padding:13px 18px}
+  .floe .ph{aspect-ratio:16/9}
+  .floe .ph img{object-position:50% 58%}
+  .floe .tag{left:4px;font-size:1rem}
+  .today{padding:24px 20px;border-radius:26px}
+  .today .acts .btn{width:100%}
+  .seg button{padding:8px 11px;font-size:.88rem}
+  section{padding:52px 0}
+  .inside{grid-template-columns:1fr}
+  .room.big,.room.tall,.room.third{grid-column:auto}
+  .room img,.room.big img,.room.tall img{height:200px}
+  .plist li{grid-template-columns:1fr}
+  .cafe{grid-template-columns:1fr 1fr;gap:10px}
+  .cafe div{padding:14px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .floe .tag{animation:bob 3.2s ease-in-out infinite}
+  @keyframes bob{50%{transform:rotate(-6deg) translateY(-6px)}}
+}
+</style>
+</head>
+<body>
+<div style="background:#17201B;color:#fff;font:500 14px/1.4 system-ui,sans-serif;padding:9px 20px;position:relative;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;z-index:2147483000"><span style="display:inline-flex;align-items:center;gap:8px"><svg style="height:12px;width:auto;color:#fff" viewBox="0 0 487.5 208.5" role="img" aria-label="Pete Owen Design logo"><path fill="currentColor" d="M487.5,10.6h-41.2v15.5c-15.3-10.6-33.9-16.8-53.8-16.8-30.1,0-57,14.1-74.4,36-17.4-21.9-44.3-36-74.4-36s-57,14.1-74.4,36c-17.4-21.9-44.3-36-74.4-36C44.8,9.4,3.8,48,0,96.9h-.3v100.3h41.2v-14.5c15.3,10.6,33.9,16.8,53.8,16.8,30.1,0,57-14.1,74.4-36,17.4,21.9,44.3,36,74.4,36s57-14.1,74.4-36c17.4,21.9,44.3,36,74.4,36,52.4,0,95.1-42.6,95.1-95.1s0-1.3,0-1.9h0V10.6h0ZM94.6,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8ZM243.5,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8ZM392.4,158.2c-29.7,0-53.8-24.2-53.8-53.8s24.2-53.8,53.8-53.8,53.8,24.2,53.8,53.8-24.2,53.8-53.8,53.8Z"/></svg> Design idea by Pete Owen Design. Not the live Polar Palace website.</span><a href="../index.html" style="color:#fff;font-weight:700">Back to the start</a></div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#" aria-label="Polar Palace home">
+      <!-- placeholder sketch of the bear, not Polar Palace's artwork -->
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="16" cy="16" r="9" fill="#fff" stroke="#12306B" stroke-width="3"/><circle cx="48" cy="16" r="9" fill="#fff" stroke="#12306B" stroke-width="3"/><circle cx="32" cy="32" r="22" fill="#fff" stroke="#12306B" stroke-width="3"/><ellipse cx="32" cy="38" rx="10" ry="8" fill="#DDF1FC" stroke="#12306B" stroke-width="2.5"/><ellipse cx="32" cy="34.5" rx="4" ry="3" fill="#12306B"/><circle cx="24" cy="27" r="2.6" fill="#12306B"/><circle cx="40" cy="27" r="2.6" fill="#12306B"/><path d="M12 50 L52 50 L50 58 L14 58Z" fill="#FFD23F" stroke="#12306B" stroke-width="2.5"/><path d="M20 50l-4 8M30 50l-4 8M40 50l-4 8M50 50l-4 8" stroke="#E5332A" stroke-width="4"/></svg>
+      <span><b>Polar <span>Palace</span></b><small>Play and Party Centre, Winsford</small></span>
+    </a>
+    <nav aria-label="Main"><a href="#today">Prices and times</a><a href="#parties">Parties</a><a href="#week">Toddlers</a><a href="#week">Nerf Wars</a><a href="#find">Find us</a></nav>
+    <a class="btn r" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book play</a>
+  </div>
+</header>
+
+<div class="hero">
+  <svg class="flake f1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2v36M4 11l32 18M4 29l32-18" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+  <svg class="flake f2" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2v36M4 11l32 18M4 29l32-18" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+  <svg class="flake f3" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2v36M4 11l32 18M4 29l32-18" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+  <div class="wrap">
+    <div>
+      <span class="say">Pete's saved you a lane.</span>
+      <h1>The coolest <span>palace</span> in Cheshire.</h1>
+      <p class="lede">Indoor play and parties for ages 0 to 12 in Winsford, with a three lane slide, a football court and go-karts.</p>
+      <div class="cta">
+        <a class="btn r" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book a play session</a>
+        <a class="btn w" href="#parties">Plan a party</a>
+      </div>
+    </div>
+    <div class="floe">
+      <div class="ph"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0033.jpg" alt="Polar Bear Pete in costume, arms up, sliding down the blue three lane slide"></div>
+      <span class="tag">Wheee!</span>
+    </div>
+  </div>
+  <div class="scarf"></div>
+</div>
+
+<main>
+<div class="wrap">
+  <div class="today" id="today">
+    <div>
+      <div class="lab" data-lab>Open today</div>
+      <div class="hrs" data-hrs>10am to 5.45pm</div>
+      <p class="note" data-note>Last entry one hour before closing. Stay as long as you like, unless it is very busy.</p>
+      <div class="seg" role="group" aria-label="Which times to show"><button type="button" data-mode="term" aria-pressed="true">Term time</button><button type="button" data-mode="hol" aria-pressed="false">School holidays</button></div>
+    </div>
+    <dl class="price">
+      <div class="h" data-ph>Today's prices</div>
+      <dt>Ages 4 to 12</dt><dd data-p4>£10.95</dd>
+      <dt>Ages 1 to 3</dt><dd data-p1>£9.95</dd>
+      <dt>Under 1s</dt><dd>£1</dd>
+      <dt>Grown ups</dt><dd>£2</dd>
+    </dl>
+    <div class="acts">
+      <a class="btn y" href="https://standard.polarpalace.bookedit.online/play-session-booking/">Book a play session</a>
+      <p>Walk-ins welcome. Every visit comes with a voucher to come back free within 5 days.</p>
+    </div>
+  </div>
+</div>
+
+<section aria-labelledby="in">
+  <div class="wrap">
+    <h2 class="sh" id="in">Inside the palace</h2>
+    <p class="sp">One of the biggest play frames in Cheshire, with its own corners for babies, toddlers and big kids.</p>
+    <div class="inside">
+      <div class="room big"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2016/08/play-area-slide-01.jpg" alt="Children racing down the blue three lane slide"><div><h3>The three lane slide</h3><p>Race your brother, race your dad, race Pete. The big frame has rope bridges, crawl tubes and a ball pool too.</p></div></div>
+      <div class="room tall"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0034.jpg" alt="The multi-level play frame with a purple tube slide"><div><h3>The big frame</h3><p>Climb, crawl and explore, levels and levels of it.</p></div></div>
+      <div class="room third blu"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2016/08/play-area-slide-03.jpg" alt="Children playing football on the green indoor court"><div><h3>Football and basketball court</h3><p>Their own pitch, indoors, whatever the weather.</p></div></div>
+      <div class="room third col"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2016/08/play-area-slide-02.jpg" alt="A child driving a red go-kart on the indoor track"><div><h3>Go-karts</h3><p>£1 a ride on the indoor track.</p></div></div>
+      <div class="room third"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2021/09/sensory-room-scaled.jpg" alt="The sensory room lit with blue and green lights"><div><h3>Under 2s, under 5s and the sensory room</h3><p>Soft areas, trikes, a sand pit and a toy corner, plus baby change and bottle warming.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="parties" id="parties" aria-labelledby="pt">
+  <div class="wrap pgrid">
+    <div>
+      <h2 class="sh" id="pt">Parties with a polar bear on the guest list</h2>
+      <p class="inc">Every party lasts 1 hour 45 minutes and comes with a party host, a throne for the birthday child, invitations to download, and we present and wrap your cake. Add Pete, or one of his friends, for £50.</p>
+      <div class="ph"><img src="https://www.polarpalace.co.uk/wp-content/uploads/2025/03/IMG-20250313-WA0036.jpg" alt="The party room with a Happy Birthday mural of a walrus and a polar bear"></div>
+      <p class="deal scarf"><span>Thursday or Friday, 4pm to 5.45pm: 10% off any party.</span></p>
+    </div>
+    <ul class="plist">
+      <li><b>Disco and Snow</b><span class="pr">£240 for 12</span><small>Disco, snow machine, hot and cold food, ice cream and juice, sweet cones.</small></li>
+      <li><b>Princess Sparkle and Shine</b><span class="pr">£240 for 12</span><small>Glitter faces and a colour hair braid for every guest, a crown or tiara for the birthday child.</small></li>
+      <li><b>Football Champions</b><span class="pr">£240 for 12</span><small>Skills session, penalty shoot-out, team bibs, captain's armband, match day ticket invites.</small></li>
+      <li><b>Build a Bear</b><span class="pr">£300 for 12</span><small>Every child builds their own bear, with a certificate and wish heart.</small></li>
+      <li><b>Class Party</b><span class="pr">£375 for 30</span><small>Invite the whole class. Play, food and juice. £12.50 each after 30.</small></li>
+      <li class="priv"><b>VIP, the whole palace</b><span class="pr">£450 for 20</span><small>Private hire, 9.45 to 11.30am or 4 to 5.45pm. Disco and snow, deluxe party bags, a sandwich platter for the grown ups.</small></li>
+      <li class="priv"><b>Nerf Wars, the whole palace</b><span class="pr">£450 for 20</span><small>Private hire. Capture the flag, zombies and targets, with all the Nerf kit.</small></li>
+      <li style="background:none;border:0;padding:6px 0 0;display:flex;gap:12px;flex-wrap:wrap"><a class="btn r" href="https://standard.polarpalace.bookedit.online/party-bookings/">Book a party</a><a class="btn w" href="tel:01606863623">Call 01606 863623</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="week" aria-labelledby="wh">
+  <div class="wrap">
+    <h2 class="sh" id="wh">What's on this week</h2>
+    <p class="sp" data-on>Here is what runs every week, and when.</p>
+    <div class="week">
+      <div class="wk"><span class="when">Mon to Fri, term time</span><h3>Toddler Time</h3><p>Unlimited play, no need to book, and the sensory room is open. Toddler activities on Wednesday, Thursday and Friday: messy play, arts and crafts, discos and story time, all included.</p></div>
+      <div class="wk"><span class="when">Last Friday of the month</span><h3>Nerf Wars night</h3><p>Capture the flag, target shooting and Nerf zombies. £9.95 a child, £2 a grown up. Bring your own blaster if you like, but no ammo.</p><a href="https://standard.polarpalace.bookedit.online/nerf-sessions/">Book a Nerf night</a></div>
+      <div class="wk"><span class="when">Every day</span><h3>The café</h3><p>Hot food made to order, proper coffee, milkshakes and slush, and free wifi while they play.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="member">
+    <div class="big">£35<small>a month</small></div>
+    <div><h2>Come as often as you like</h2><p>Monthly membership: one child and one grown up, unlimited visits seven days a week, school holidays included. Add a child for £10 or a grown up for £5. Cancel any time.</p></div>
+    <a class="btn y" href="https://bookedit.online/polar-palace-membership/">Join</a>
+  </div>
+</div>
+
+<section aria-labelledby="cf">
+  <div class="wrap">
+    <h2 class="sh" id="cf">Something warm for you</h2>
+    <p class="sp">All meals are freshly made to order, with fresh coffee and plenty for the children. Please do not bring your own food or drink.</p>
+    <div class="cafe">
+      <div><b>Kids' mix and match</b><span>£5.50</span></div>
+      <div><b>All day breakfast</b><span>£8.95</span></div>
+      <div><b>Latte or cappuccino</b><span>£3.40</span></div>
+      <div><b>Nutella hot chocolate</b><span>£4.10</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="find" aria-labelledby="fd" style="padding-top:20px">
+  <div class="wrap find">
+    <div>
+      <h2 class="sh" id="fd">Find the palace</h2>
+      <address>Unit 10, Pineapple Park<br>Road One, Winsford Industrial Estate<br>Winsford, Cheshire CW7 3PR</address>
+      <a class="tel" href="tel:01606863623">01606 863623</a>
+      <p style="margin:0;color:var(--mute)">Free parking. If it is full, park at the far end of Pineapple Park.</p>
+    </div>
+    <div class="card">
+      <h3>Opening times</h3>
+      <ul>
+        <li><b>Term time:</b> Mon to Wed 10am to 2pm, Thu and Fri 10am to 5.30pm, Sat and Sun 10am to 5.45pm</li>
+        <li><b>School holidays:</b> Mon to Fri 10am to 4pm, Sat and Sun 10am to 5.45pm</li>
+        <li>Last entry one hour before closing. Socks on, please (we sell them).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Polar Palace Play and Party Centre, open since July 2006.</p>
+    <p>Design idea by Pete Owen Design. Prices, times, party packages, café prices, address and phone number are Polar Palace's own, from its current website. Headlines, the speech bubbles and short descriptions are proposed copy. Photographs are Polar Palace's own, from its website. The bear mark is a placeholder sketch, not Polar Palace's artwork.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var T={0:[10,17.75],1:[10,14],2:[10,14],3:[10,14],4:[10,17.5],5:[10,17.5],6:[10,17.75]};
+  var H={0:[10,17.75],1:[10,16],2:[10,16],3:[10,16],4:[10,16],5:[10,16],6:[10,17.75]};
+  var names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  function f(x){var h=Math.floor(x),m=Math.round((x-h)*60),s=h>12?h-12:h;return s+(m?"."+(m<10?"0":"")+m:"")+(h>=12?"pm":"am");}
+  var mode="term";
+  function draw(){
+    var t=mode==="term"?T:H,d=new Date(),day=d.getDay(),now=d.getHours()+d.getMinutes()/60,o=t[day];
+    var lab=document.querySelector("[data-lab]"),hrs=document.querySelector("[data-hrs]");
+    if(now<o[0]){lab.textContent="Opens today, "+names[day];hrs.textContent=f(o[0])+" to "+f(o[1]);}
+    else if(now<o[1]){lab.textContent="Open now, "+names[day];hrs.textContent="Until "+f(o[1]);}
+    else{var n=(day+1)%7;lab.textContent="Closed now. Open "+names[n];hrs.textContent=f(t[n][0])+" to "+f(t[n][1]);}
+    var peak=mode==="hol"||day===0||day===6;
+    document.querySelector("[data-ph]").textContent=peak?"Today's prices (peak)":"Today's prices (term time weekday)";
+    document.querySelector("[data-p4]").textContent=peak?"£10.95":"£9.95";
+    document.querySelector("[data-p1]").textContent=peak?"£9.95":"£6.95";
+    var on=document.querySelector("[data-on]");
+    if(on){on.textContent=(mode==="term"&&day>=3&&day<=5)?"Today there is a toddler activity session, included in your entry.":(mode==="term"&&day>=1&&day<=5)?"Today is Toddler Time: unlimited play and the sensory room.":"Here is what runs every week, and when.";}
+  }
+  document.querySelectorAll("[data-mode]").forEach(function(b){b.addEventListener("click",function(){mode=b.getAttribute("data-mode");document.querySelectorAll("[data-mode]").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});draw();});});
+  draw();
+})();
+</script>
+</body>
+</html>
